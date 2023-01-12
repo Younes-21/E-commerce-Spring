@@ -1,5 +1,6 @@
 package com.pfa.projetpfa.service.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -27,6 +28,7 @@ public class User {
     private Collection<Order> order;
     @OneToOne
     @JoinColumn(name = "id_basket")
+    @JsonBackReference
     private Basket basket;
 
     public User() {

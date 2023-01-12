@@ -1,5 +1,6 @@
 package com.pfa.projetpfa.service.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ public class Basket {
     private int quantity;
     private float total_price;
     @OneToOne
-    @JoinColumn(name = "id_user")
+    //@JoinColumn(name = "id_user")
+    @JsonBackReference
     private User user;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "basket_product", joinColumns = @JoinColumn(name = "id_basket"), inverseJoinColumns = @JoinColumn(name = "id_product"))
