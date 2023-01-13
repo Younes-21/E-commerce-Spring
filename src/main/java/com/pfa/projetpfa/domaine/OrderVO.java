@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 public class OrderVO {
-    private long id;
+    private Long id;
     private Date ordered;
     private Date shipped;
     private String status;
@@ -27,7 +27,7 @@ public class OrderVO {
         super();
     }
 
-    public OrderVO(long id, Date ordered, Date shipped, String status, int quantity, float delivery_price, float total, List<Product> product, User user, Bill bill, Delivery delivery, boolean is_deleted) {
+    public OrderVO(Long id, Date ordered, Date shipped, String status, int quantity, float delivery_price, float total, List<Product> product, User user, Bill bill, Delivery delivery, boolean is_deleted) {
         this.id = id;
         this.ordered = ordered;
         this.shipped = shipped;
@@ -42,11 +42,11 @@ public class OrderVO {
         this.is_deleted = is_deleted;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

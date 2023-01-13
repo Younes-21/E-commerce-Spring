@@ -1,5 +1,8 @@
 package com.pfa.projetpfa.service.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -11,7 +14,7 @@ public class Order {
     @Id
     @Column(name="id_order" , nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private Date ordered;
     private Date shipped;
     private String status;
@@ -21,22 +24,26 @@ public class Order {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "order_product", joinColumns = @JoinColumn(name = "id_order"), inverseJoinColumns = @JoinColumn(name = "id_product"))
     private List<Product> product = new ArrayList<>();
-    @ManyToOne(fetch=FetchType.LAZY)
+
+    @JsonBackReference
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "id_user")
     private User user;
 
     @OneToOne
     @JoinColumn(name = "id_bill")
+    @JsonBackReference
     private Bill bill;
     @OneToOne
     @JoinColumn(name = "id_delivery")
+    @JsonBackReference
     private Delivery delivery;
     private boolean is_deleted;
 
     public Order() {
     }
 
-    public Order(long id, Date ordered, Date shipped, String status, int quantity, float delivery_price, float total, List<Product> product, User user, Bill bill, Delivery delivery, boolean is_deleted) {
+    public Order(Long id, Date ordered, Date shipped, String status, int quantity, float delivery_price, float total, List<Product> product, User user, Bill bill, Delivery delivery, boolean is_deleted) {
         this.id = id;
         this.ordered = ordered;
         this.shipped = shipped;
@@ -51,11 +58,11 @@ public class Order {
         this.is_deleted = is_deleted;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

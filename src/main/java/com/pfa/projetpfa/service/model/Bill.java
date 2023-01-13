@@ -1,4 +1,5 @@
 package com.pfa.projetpfa.service.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -11,8 +12,9 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private float total_price;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_order")
+    @OneToOne
+    //@JoinColumn(name = "id_order")
+    @JsonBackReference
     private Order order;
     private boolean is_deleted;
 

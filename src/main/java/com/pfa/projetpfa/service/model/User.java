@@ -1,6 +1,7 @@
 package com.pfa.projetpfa.service.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Collection;
@@ -9,8 +10,9 @@ import java.util.Collection;
 public class User {
 
     @Id
+    @Column(name="id_user" , nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String first_name;
     private String last_name;
     private String phone;
@@ -23,7 +25,9 @@ public class User {
     @OneToOne
     @JoinColumn(name = "id_payment")
     private Payment payment;
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     //@JoinColumn(name = "id_order")
     private Collection<Order> order;
     @OneToOne

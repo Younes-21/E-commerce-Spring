@@ -1,5 +1,6 @@
 package com.pfa.projetpfa.service.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -13,7 +14,8 @@ public class Delivery {
     private Date start_date;
     private Date arrived_date;
     @OneToOne
-    @JoinColumn(name = "id_order")
+    //@JoinColumn(name = "id_order")
+    @JsonBackReference
     private Order order;
     private boolean is_deleted;
 
