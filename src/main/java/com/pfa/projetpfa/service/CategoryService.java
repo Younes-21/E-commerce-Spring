@@ -21,8 +21,9 @@ public class CategoryService implements ICategoryService, CommandLineRunner {
     }
 
     @Override
-    public void save(CategoryVO category) {
+    public CategoryVO save(CategoryVO category) {
 categoryRepository.save(CategoryConverter.toBo(category));
+        return category;
     }
 
     @Override

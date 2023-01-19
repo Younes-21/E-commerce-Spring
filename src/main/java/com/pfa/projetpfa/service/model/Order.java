@@ -1,9 +1,8 @@
 package com.pfa.projetpfa.service.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,6 +22,9 @@ public class Order {
     private float total;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "order_product", joinColumns = @JoinColumn(name = "id_order"), inverseJoinColumns = @JoinColumn(name = "id_product"))
+    @JsonIgnore
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //@Getter(onMethod_=@JsonIgnore)
     private List<Product> product = new ArrayList<>();
 
     @JsonBackReference

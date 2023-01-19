@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ICategoryService {
     List<CategoryVO> getCategories();
-    void save(CategoryVO category);
+    CategoryVO save(CategoryVO category);
 
     CategoryVO getCategoryById(Long id);
     void delete(Long id);

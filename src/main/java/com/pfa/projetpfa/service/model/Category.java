@@ -12,7 +12,7 @@ public class Category {
     private Long id;
     private String name;
     @JsonManagedReference
-    @OneToMany(mappedBy = "category" , fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category" , fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Collection<Product> products;
     private boolean is_deleted;
 

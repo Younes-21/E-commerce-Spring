@@ -9,7 +9,6 @@ import java.util.List;
 public class BasketVO {
     private long id;
     private Date date;
-    private int quantity;
     private float total_price;
     private User user;
     private List<Product> product = new ArrayList<>();
@@ -18,10 +17,9 @@ public class BasketVO {
         super();
     }
 
-    public BasketVO(long id, Date date, int quantity, float total_price, User user, List<Product> product, boolean is_deleted) {
+    public BasketVO(long id, Date date, float total_price, User user, List<Product> product, boolean is_deleted) {
         this.id = id;
         this.date = date;
-        this.quantity = quantity;
         this.total_price = total_price;
         this.user = user;
         this.product = product;
@@ -42,14 +40,6 @@ public class BasketVO {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public float getTotal_price() {

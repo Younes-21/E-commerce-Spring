@@ -12,7 +12,6 @@ public class BasketConverter {
         BasketVO vo = new BasketVO();
         vo.setId(bo.getId());
         vo.setDate(bo.getDate());
-        vo.setQuantity(bo.getQuantity());
         vo.setTotal_price(bo.getTotal_price());
         vo.setUser(bo.getUser());
         vo.setProduct(bo.getProduct());
@@ -24,7 +23,6 @@ public class BasketConverter {
         Basket bo = new Basket();
         bo.setId(vo.getId());
         bo.setDate(vo.getDate());
-        bo.setQuantity(vo.getQuantity());
         bo.setTotal_price(vo.getTotal_price());
         bo.setUser(vo.getUser());
         bo.setProduct(vo.getProduct());

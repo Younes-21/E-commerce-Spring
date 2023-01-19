@@ -1,6 +1,7 @@
 package com.pfa.projetpfa.service.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -14,7 +15,6 @@ public class Basket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private Date date;
-    private int quantity;
     private float total_price;
     @OneToOne
     //@JoinColumn(name = "id_user")
@@ -22,6 +22,7 @@ public class Basket {
     private User user;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "basket_product", joinColumns = @JoinColumn(name = "id_basket"), inverseJoinColumns = @JoinColumn(name = "id_product"))
+    @JsonIgnore
     private List<Product> product = new ArrayList<>();
     private boolean is_deleted;
 
@@ -29,10 +30,9 @@ public class Basket {
     public Basket() {
     }
 
-    public Basket(long id, Date date, int quantity, float total_price, User user, List<Product> product, boolean is_deleted) {
+    public Basket(long id, Date date,  float total_price, User user, List<Product> product, boolean is_deleted) {
         this.id = id;
         this.date = date;
-        this.quantity = quantity;
         this.total_price = total_price;
         this.user = user;
         this.product = product;
@@ -53,14 +53,6 @@ public class Basket {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public float getTotal_price() {
@@ -100,7 +92,6 @@ public class Basket {
         return "Basket{" +
                 "id=" + id +
                 ", date=" + date +
-                ", quantity=" + quantity +
                 ", total_price=" + total_price +
                 ", user=" + user +
                 ", product=" + product +

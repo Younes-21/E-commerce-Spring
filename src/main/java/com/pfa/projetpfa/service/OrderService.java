@@ -21,9 +21,10 @@ public class OrderService implements IOrderService , CommandLineRunner {
     }
 
     @Override
-    public void saveOrder(OrderVO order) {
+    public OrderVO saveOrder(OrderVO order) {
         orderRepository.save(OrderConverter.toBo(order));
 
+        return order;
     }
 
     @Override

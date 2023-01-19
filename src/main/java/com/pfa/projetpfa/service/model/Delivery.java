@@ -10,7 +10,7 @@ public class Delivery {
     @Id
     @Column(name="id_delivery" , nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private Date start_date;
     private Date arrived_date;
     @OneToOne
@@ -22,7 +22,7 @@ public class Delivery {
     public Delivery() {
     }
 
-    public Delivery(long id, Date start_date, Date arrived_date, Order order, boolean is_deleted) {
+    public Delivery(Long id, Date start_date, Date arrived_date, Order order, boolean is_deleted) {
         this.id = id;
         this.start_date = start_date;
         this.arrived_date = arrived_date;
@@ -30,11 +30,11 @@ public class Delivery {
         this.is_deleted = is_deleted;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -68,5 +68,16 @@ public class Delivery {
 
     public void setIs_deleted(boolean is_deleted) {
         this.is_deleted = is_deleted;
+    }
+
+    @Override
+    public String toString() {
+        return "Delivery{" +
+                "id=" + id +
+                ", start_date=" + start_date +
+                ", arrived_date=" + arrived_date +
+                ", order=" + order +
+                ", is_deleted=" + is_deleted +
+                '}';
     }
 }
