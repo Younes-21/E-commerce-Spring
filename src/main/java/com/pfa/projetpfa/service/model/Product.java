@@ -1,6 +1,7 @@
 package com.pfa.projetpfa.service.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -8,6 +9,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name="Product")
+@JsonIgnoreProperties("hibernateLazyInitializer")
 public class Product {
     @Id
     @Column(name="id_product" , nullable = false)
@@ -23,8 +25,8 @@ public class Product {
     private int stock;
     private int stock_available;
     private float weight;
-    @JsonBackReference
-    @ManyToOne(fetch=FetchType.EAGER)
+    @JsonBackReference(value = "product-category")
+    @ManyToOne
     @JoinColumn(name="id_category")
     private Category category;
     @ManyToMany(mappedBy = "product")
@@ -33,7 +35,7 @@ public class Product {
     @ManyToMany(mappedBy = "product")
     //@JoinColumn(name="id_order")
     private Collection<Order> order;
-    @JsonManagedReference
+    @JsonManagedReference(value = "product-image")
     @OneToMany(mappedBy = "product" , fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Collection<Image> images;
 

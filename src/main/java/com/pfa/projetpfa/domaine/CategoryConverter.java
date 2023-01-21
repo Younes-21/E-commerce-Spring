@@ -1,6 +1,7 @@
 package com.pfa.projetpfa.domaine;
 
 import com.pfa.projetpfa.service.model.Category;
+import com.pfa.projetpfa.service.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;

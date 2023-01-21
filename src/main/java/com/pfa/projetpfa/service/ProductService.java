@@ -45,20 +45,19 @@ public class ProductService implements IProductService, CommandLineRunner {
 
     @Override
     public List<ProductVO> getProductsByCategory(Category category) {
-        List<Product> list = productRepository.findByCategory(category);
-        return ProductConverter.toListVo(list);
+        return null;
     }
 
     @Override
     public List<ProductVO> findAll(int pageId, int size) {
-        Page<Product> result = productRepository.findAll(PageRequest.of(pageId, size, Sort.Direction.ASC, "name"));
-        return ProductConverter.toListVo(result.getContent());
+        return null;
     }
 
     @Override
     public List<ProductVO> sortBy(String fieldName) {
-        return ProductConverter.toListVo(productRepository.findAll(Sort.by(fieldName)));
+        return null;
     }
+
 
     @Override
     public void run(String... args) throws Exception {

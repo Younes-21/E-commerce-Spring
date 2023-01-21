@@ -23,16 +23,17 @@ public class User {
     private String role;
     private boolean is_deleted;
     @OneToOne
-    @JoinColumn(name = "id_payment")
+    //@JoinColumn(name = "id_payment")
+    @JsonBackReference(value = "payment-user")
     private Payment payment;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "user-order")
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     //@JoinColumn(name = "id_order")
     private Collection<Order> order;
     @OneToOne
     @JoinColumn(name = "id_basket")
-    @JsonBackReference
+    @JsonBackReference(value = "user-basket")
     private Basket basket;
 
     public User() {

@@ -27,18 +27,18 @@ public class Order {
     //@Getter(onMethod_=@JsonIgnore)
     private List<Product> product = new ArrayList<>();
 
-    @JsonBackReference
+    @JsonBackReference(value = "user-order")
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "id_user")
     private User user;
 
     @OneToOne
     @JoinColumn(name = "id_bill")
-    @JsonBackReference
+    @JsonBackReference(value = "bill-order")
     private Bill bill;
     @OneToOne
     @JoinColumn(name = "id_delivery")
-    @JsonBackReference
+    @JsonBackReference(value = "delivery-order")
     private Delivery delivery;
     private boolean is_deleted;
 

@@ -4,11 +4,6 @@ import com.pfa.projetpfa.dao.BasketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import com.pfa.projetpfa.domaine.BasketConverter;
 import com.pfa.projetpfa.domaine.BasketVO;
 import com.pfa.projetpfa.service.model.Basket;
@@ -27,8 +22,9 @@ public class BasketService implements IBasketService , CommandLineRunner  {
 }
 
     @Override
-    public void saveBasket(BasketVO basket) {
+    public BasketVO saveBasket(BasketVO basket) {
 basketRepository.save(BasketConverter.toBo(basket));
+        return basket;
     }
 
     @Override

@@ -15,7 +15,7 @@ public class Delivery {
     private Date arrived_date;
     @OneToOne
     //@JoinColumn(name = "id_order")
-    @JsonBackReference
+    @JsonBackReference(value = "delivery-order")
     private Order order;
     private boolean is_deleted;
 

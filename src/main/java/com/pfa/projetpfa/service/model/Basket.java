@@ -18,7 +18,7 @@ public class Basket {
     private float total_price;
     @OneToOne
     //@JoinColumn(name = "id_user")
-    @JsonBackReference
+    @JsonBackReference(value = "user-basket")
     private User user;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "basket_product", joinColumns = @JoinColumn(name = "id_basket"), inverseJoinColumns = @JoinColumn(name = "id_product"))

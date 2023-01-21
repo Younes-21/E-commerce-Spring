@@ -14,7 +14,7 @@ public class Bill {
     private float total_price;
     @OneToOne
     //@JoinColumn(name = "id_order")
-    @JsonBackReference
+    @JsonBackReference(value = "bill-order")
     private Order order;
     private boolean is_deleted;
 

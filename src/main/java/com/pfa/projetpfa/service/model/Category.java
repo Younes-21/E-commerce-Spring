@@ -1,4 +1,5 @@
 package com.pfa.projetpfa.service.model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -11,8 +12,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @JsonManagedReference
-    @OneToMany(mappedBy = "category" , fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "product-category")
+    @OneToMany(mappedBy = "category" , fetch = FetchType.EAGER)
     private Collection<Product> products;
     private boolean is_deleted;
 

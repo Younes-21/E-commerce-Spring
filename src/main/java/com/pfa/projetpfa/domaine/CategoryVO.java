@@ -14,7 +14,7 @@ public class CategoryVO {
     private boolean is_deleted;
 
     public CategoryVO(){
-        super();
+
     }
 
     public CategoryVO(Long id, String name, Collection<Product> products, boolean is_deleted) {
