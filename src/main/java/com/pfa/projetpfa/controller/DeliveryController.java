@@ -22,7 +22,7 @@ public class DeliveryController {
         return service.getDeliveries();
     }
 
-    // Save order
+    // Save delivery
     @PostMapping("/deliveries")
     public DeliveryVO save(@RequestBody DeliveryVO delivery){
         return service.saveDelivery(delivery);
