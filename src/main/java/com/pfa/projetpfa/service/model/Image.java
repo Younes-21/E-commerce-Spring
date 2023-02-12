@@ -1,8 +1,10 @@
 package com.pfa.projetpfa.service.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 @Entity
 @Table(name="Image")
+//@JsonIgnoreProperties("hibernateLazyInitializer")
 public class Image {
     @Id
     @Column(name = "id_image", nullable = false)
@@ -10,7 +12,7 @@ public class Image {
     private Long id;
     private String img;
     @JsonBackReference(value = "product-image")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "id_product")
     private Product product;
     private boolean is_deleted;

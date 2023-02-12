@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.util.Collection;
 
 @Entity
+@JsonIgnoreProperties("hibernateLazyInitializer")
 public class Category {
     @Id
     @Column(name="id_category" , nullable = false)
@@ -13,7 +14,9 @@ public class Category {
     private Long id;
     private String name;
     @JsonManagedReference(value = "product-category")
-    @OneToMany(mappedBy = "category" , fetch = FetchType.EAGER)
+    //kant m7yda cascade
+    //lazy kant kayna
+    @OneToMany(mappedBy = "category" , fetch = FetchType.LAZY/*,cascade = CascadeType.ALL*/)
     private Collection<Product> products;
     private boolean is_deleted;
 

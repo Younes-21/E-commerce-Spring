@@ -24,7 +24,7 @@ public class DeliveryConverter {
         bo.setId(vo.getId());
         bo.setStart_date(vo.getStart_date());
         bo.setArrived_date(vo.getArrived_date());
-        bo.setOrder(bo.getOrder());
+        bo.setOrder(vo.getOrder());
         bo.setIs_deleted(vo.isIs_deleted());
         return bo;
     }

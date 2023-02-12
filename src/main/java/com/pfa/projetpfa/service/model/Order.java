@@ -20,10 +20,10 @@ public class Order {
     private int quantity;
     private float delivery_price;
     private float total;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany//(cascade = CascadeType.ALL)
     @JoinTable(name = "order_product", joinColumns = @JoinColumn(name = "id_order"), inverseJoinColumns = @JoinColumn(name = "id_product"))
     @JsonIgnore
-    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //@JsonProperty(access = JsonProperty.Access.READ_ONLY)
     //@Getter(onMethod_=@JsonIgnore)
     private List<Product> product = new ArrayList<>();
 

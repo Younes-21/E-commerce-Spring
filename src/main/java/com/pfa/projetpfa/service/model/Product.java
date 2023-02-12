@@ -26,7 +26,7 @@ public class Product {
     private int stock_available;
     private float weight;
     @JsonBackReference(value = "product-category")
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="id_category")
     private Category category;
     @ManyToMany(mappedBy = "product")
@@ -36,7 +36,7 @@ public class Product {
     //@JoinColumn(name="id_order")
     private Collection<Order> order;
     @JsonManagedReference(value = "product-image")
-    @OneToMany(mappedBy = "product" , fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product" , fetch = FetchType.LAZY/*,cascade = CascadeType.ALL*/)
     private Collection<Image> images;
 
     private boolean is_deleted;
