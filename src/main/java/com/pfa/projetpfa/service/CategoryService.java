@@ -33,11 +33,23 @@ categoryRepository.save(CategoryConverter.toBo(category));
             return null;
         return CategoryConverter.toVo(categoryRepository.getOne(id));    }
 
+   /* @Override
+    public List<CategoryVO> getCategoryByName(String categoryVoName) {
+        List<Category> list = categoryRepository.findByName(categoryVoName);
+        return CategoryConverter.toListVo(list);
+    }*/
+
     @Override
     public void delete(Long id) {
         categoryRepository.deleteById(id);
     }
 
+    /*@Override
+    public List<CategoryVO> findByName(String name) {
+        List<Category> list = categoryRepository.findByName(name);
+        return CategoryConverter.toListVo(list);
+    }
+*/
     @Override
     public void run(String... args) throws Exception {
 

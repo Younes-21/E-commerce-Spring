@@ -3,6 +3,8 @@ package com.pfa.projetpfa.service;
 import com.pfa.projetpfa.dao.ImageRepository;
 import com.pfa.projetpfa.domaine.ImageConverter;
 import com.pfa.projetpfa.domaine.ImageVO;
+import com.pfa.projetpfa.domaine.ProductConverter;
+import com.pfa.projetpfa.domaine.ProductVO;
 import com.pfa.projetpfa.service.model.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,7 +24,7 @@ return ImageConverter.toListVo(list);
 
     @Override
     public void save(ImageVO image) {
-
+        imageRepository.save(ImageConverter.toBo(image));
     }
 
     @Override

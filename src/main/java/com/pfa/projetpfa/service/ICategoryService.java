@@ -10,4 +10,7 @@ public interface ICategoryService {
 
     CategoryVO getCategoryById(Long id);
     void delete(Long id);
+    //List<CategoryVO> findByName(String name);
+
+    //List<CategoryVO> getCategoryByName(String categoryVoName);
 }
